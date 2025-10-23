@@ -1,3 +1,10 @@
+export interface ResortInfo {
+  name: string;
+  tagline: string;
+  description: string;
+  location: string;
+}
+
 export interface Room {
   id: string;
   name: string;
@@ -66,6 +73,122 @@ export const resortProperties: ResortProperty[] = [
       top: "70%",
       left: "55%"
     }
+  }
+];
+
+export const resortInfo: ResortInfo = {
+  name: "RIMBA",
+  tagline: "Enveloped in Forest Tranquility",
+  description: "Nestled in a tranquil forest setting, RIMBA offers an escape into nature's embrace. Where modern luxury meets untamed beauty, creating an unforgettable sanctuary. A place where time slows down and every moment becomes a cherished memory",
+  location: "AYANA BALI"
+};
+
+export const dining = [
+  {
+    id: 1,
+    name: "Kisik Seafood Restaurant",
+    cuisine: "Seafood",
+    description: "Perched on the cliffs with stunning ocean views, Kisik offers the freshest seafood prepared with local and international flavors. Experience dining in traditional Balinese bamboo gazebos as waves crash below.",
+    hours: "6:00 PM - 11:00 PM",
+    image: "https://images.unsplash.com/photo-1539136788836-5699e78bfc75?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 2,
+    name: "To'ge Pan Asian",
+    cuisine: "Asian Fusion",
+    description: "A sophisticated dining venue featuring the best of Asian cuisine. From sushi to dim sum, our expert chefs create authentic dishes with a modern twist in an elegant setting with panoramic forest views.",
+    hours: "12:00 PM - 10:00 PM",
+    image: "https://images.unsplash.com/photo-1532347922424-c652d9b7208e?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 3,
+    name: "Padi Fine Dining",
+    cuisine: "International",
+    description: "Set amidst a stunning water garden, Padi offers an extraordinary fine dining experience. Our innovative menu combines the finest ingredients with artistic presentation and impeccable service.",
+    hours: "6:30 PM - 10:30 PM",
+    image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 4,
+    name: "Sunset Beach Bar",
+    cuisine: "International",
+    description: "The perfect spot to unwind with craft cocktails and light bites while watching Bali's famous sunset. Features a swim-up pool bar and comfortable lounge seating with ocean views.",
+    hours: "10:00 AM - 11:00 PM",
+    image: "https://images.unsplash.com/photo-1601051297657-29c1d45a166b?auto=format&fit=crop&q=80&w=2070"
+  }
+];
+
+export const experiences = [
+  {
+    id: 1,
+    name: "Sunrise Yoga Retreat",
+    category: "Wellness",
+    description: "Begin your day with an energizing yoga session overlooking the ocean. Our expert instructors guide you through poses while the gentle morning breeze and sounds of nature create the perfect atmosphere for mindfulness.",
+    duration: "1.5 hours",
+    image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 2,
+    name: "Traditional Cooking Class",
+    category: "Cultural",
+    description: "Learn the secrets of authentic Balinese cuisine in our chef-led cooking class. Visit local markets, discover exotic ingredients, and prepare traditional dishes in our stunning outdoor kitchen.",
+    duration: "4 hours",
+    image: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 3,
+    name: "Ocean Sunset Cruise",
+    category: "Adventure",
+    description: "Set sail on our luxury catamaran for a memorable sunset experience. Enjoy champagne and canapés while cruising along Bali's spectacular coastline as the sun paints the sky in brilliant colors.",
+    duration: "3 hours",
+    image: "https://images.unsplash.com/photo-1514649923863-ceaf75b7ec6c?auto=format&fit=crop&q=80&w=2070"
+  },
+  {
+    id: 4,
+    name: "Sacred Temple Tour",
+    category: "Cultural",
+    description: "Discover Bali's spiritual heart with guided visits to ancient temples. Learn about local customs, participate in traditional ceremonies, and gain insights into the island's rich cultural heritage.",
+    duration: "6 hours",
+    image: "https://images.unsplash.com/photo-1604841940435-b756d6c7567c?auto=format&fit=crop&q=80&w=2070"
+  }
+];
+
+export const gallery = [
+  {
+    id: 1,
+    alt: "Infinity Pool Sunset",
+    image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1",
+    category: "Amenities"
+  },
+  {
+    id: 2,
+    alt: "Ocean View Suite",
+    image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461",
+    category: "Rooms"
+  },
+  {
+    id: 3,
+    alt: "Beachfront Dining",
+    image: "https://images.unsplash.com/photo-1539136788836-5699e78bfc75",
+    category: "Dining"
+  },
+  {
+    id: 4,
+    alt: "Spa Treatment Room",
+    image: "https://images.unsplash.com/photo-1544148103-0773bf10d330",
+    category: "Wellness"
+  },
+  {
+    id: 5,
+    alt: "Forest Villa Pool",
+    image: "https://images.unsplash.com/photo-1604841940435-b756d6c7567c",
+    category: "Rooms"
+  },
+  {
+    id: 6,
+    alt: "Sunset View",
+    image: "https://images.unsplash.com/photo-1514649923863-ceaf75b7ec6c",
+    category: "Views"
   }
 ];
 

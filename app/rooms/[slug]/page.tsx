@@ -1,26 +1,31 @@
 import { rooms } from '@/data/mockData';
 import RoomDetailContent from '@/components/rooms/RoomDetailContent';
-import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
-// Generate static params for all rooms
 export async function generateStaticParams() {
-  return rooms.map((room) => ({
+  const slugs = rooms.map((room) => ({
     slug: room.id,
   }));
+  return slugs;
+}
+
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
 }
 
 export default async function RoomDetailPage({ params }: PageProps) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const { slug } = await params;
+  const room = rooms.find(r => r.id === slug);
+  
+  if (!room) {
+    notFound();
+  }
 
   return (
-    <Suspense fallback={null}>
-      <RoomDetailContent slug={params.slug} />
-    </Suspense>
+    <div className="min-h-screen bg-[#F6F3E7]">
+      <RoomDetailContent slug={slug} />
+    </div>
   );
 }

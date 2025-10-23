@@ -4,12 +4,13 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useReserveSidebar } from '@/hooks/use-reserve-sidebar';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
+  const { open } = useReserveSidebar()
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -21,6 +22,7 @@ const Header = () => {
   const navLinks = [
     { name: 'BALI', path: '/' },
     { name: 'Dining', path: '/dining' },
+    { name: 'Gallery', path: '/gallery' },
     { name: 'Spa', path: '/spa' },
     { name: 'Experiences', path: '/experiences' },
     { name: 'Weddings', path: '/weddings' },
@@ -32,8 +34,8 @@ const Header = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
+      <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${
+        isScrolled ? 'bg-[#F6F3E7]/95 backdrop-blur-sm shadow-md' : 'bg-transparent'
       }`}>
         <div className="max-w-[1920px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
@@ -61,16 +63,16 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="/reserve"
+              <button
                 className={`px-6 py-2 text-sm font-medium transition-all ${
                   isScrolled 
                     ? 'bg-teal-600 text-white hover:bg-teal-700' 
                     : 'bg-white text-gray-900 hover:bg-gray-100'
                 } rounded`}
+                onClick={open}
               >
                 Reserve
-              </Link>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -103,7 +105,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-20 lg:hidden">
           <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="absolute top-20 right-0 w-64 bg-white h-[calc(100vh-5rem)] overflow-y-auto shadow-xl">
             <div className="flex flex-col p-6 space-y-4">

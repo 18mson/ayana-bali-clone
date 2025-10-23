@@ -41,7 +41,7 @@ const ExperiencesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F6F3E7]">
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">

@@ -35,7 +35,7 @@ const ReservePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F6F3E7]">
       {/* Hero */}
       <section className="relative h-[50vh] flex items-center justify-center">
         <div 
@@ -49,7 +49,7 @@ const ReservePage = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative text-center text-white px-6">
-          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'AimeMX, serif' }}>
             Reserve Your Stay
           </h1>
           <p className="text-lg md:text-xl font-light italic">Begin Your Journey to Tranquility</p>

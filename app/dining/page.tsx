@@ -41,7 +41,7 @@ const DiningPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-">
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
@@ -78,7 +78,7 @@ const DiningPage = () => {
               key={venue.id}
               className={`flex flex-col ${
                 index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-              } gap-8 items-center bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}
+              } gap-8 items-center bg-[#F6F3E7] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300`}
             >
               <div className="lg:w-1/2 h-96 relative overflow-hidden group">
                 <Image 

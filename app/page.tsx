@@ -4,17 +4,19 @@ import Link from "next/link";
 import { useEffect, useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { api } from '../services/api';
+import { useReserveSidebar } from "@/hooks/use-reserve-sidebar";
+import clsx from "clsx";
 
 export default function Home() {
   const [resortInfo, setResortInfo] = useState({
     name: "RIMBA",
     tagline: "Enveloped in Forest Tranquility",
-    description: "",
+    description: "In the heart of Bali's forest green, RIMBA: a serene dream. An oasis where water and lushness blend, nature's embrace, a peaceful friend. Blooming flowers grace the dining space, at the pool bar time slows its pace. With dances that tell of culture's grace, embark on a journey, find your place.", 
     location: "AYANA BALI"
   });
   const [resortProperties, setResortProperties] = useState<Array<{ name: string; position: { top: string; left: string } }>>([]);
-  const [loading, setLoading] = useState(true);
-const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const { open } = useReserveSidebar();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +29,6 @@ const [scrollProgress, setScrollProgress] = useState(0);
         setResortProperties(propsRes.data);
       } catch (error) {
         console.error('Error fetching resort data:', error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchData();
@@ -54,18 +54,6 @@ const [scrollProgress, setScrollProgress] = useState(0);
     });
   };
 
-  
-
-  if (loading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-900">
-        <div className="relative w-20 h-20">
-          <div className="absolute inset-0 border-4 border-t-teal-600 border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin" />
-          <div className="absolute inset-2 border-4 border-t-white border-r-transparent border-b-transparent border-l-transparent rounded-full animate-spin-reverse" />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -105,32 +93,48 @@ const [scrollProgress, setScrollProgress] = useState(0);
           }}
         />
       </div>
-      <section className="relative h-dvh w-full">
-        <div className="relative h-full flex flex-col items-center justify-center text-white px-6">
-          <div className="text-center space-y-6 animate-fade-in">
-            <p className="text-sm tracking-[0.3em] uppercase opacity-90">{resortInfo.location}</p>
-            <h1 className="text-7xl md:text-9xl font-light tracking-wider">
-              {resortInfo.name}
-            </h1>
-            <p className="text-xl md:text-2xl font-light italic tracking-wide opacity-90">
-              {resortInfo.tagline}
-            </p>
+      <section className="min-h-[200dvh] w-full">
+        <div className="grid grid-cols-1 text-white px-6 min-h-screen">
+          <div className="h-[30dvh]"></div>
+          <div className="sticky flex flex-col items-center justify-center text-white z-10 top-1/4 mb-48">
+            <div className="text-center space-y-6">
+              <p className="text-sm tracking-[0.3em] uppercase opacity-90">{resortInfo.location}</p>
+              <h1 className="text-7xl md:text-9xl font-light tracking-wider">
+                {resortInfo.name}
+              </h1>
+              <p className="text-xl md:text-3xl font-light italic tracking-wide opacity-90">
+                {resortInfo.tagline}
+              </p>
+            </div>
+          </div>
+          <div className="mt-[100dvh] text-white px-6">
+            <div className="text-white space-y-4 text-center">
+              {resortInfo.description.split('. ').map((line: string, index: number) => (
+                <p 
+                  key={index}
+                  className="text-xl md:text-2xl font-light leading-relaxed animate-fade-in"
+                  style={{ 
+                    animationDelay: `${index * 0.2}s`,
+                    fontFamily: 'AimeMX, serif',
+                    fontStyle: 'italic'
+                  }}
+                >
+                  {line}{index < resortInfo.description.split('. ').length - 1 ? '.' : ''}
+                </p>
+              ))}
+            </div>
           </div>
 
-          {/* Sub Navigation */}
-          <div className="absolute bottom-32 left-0 right-0 flex justify-center space-x-12">
-            <Link href="/" className="text-white text-sm border-b-2 border-white pb-1">Overview</Link>
-            <Link href="/rooms" className="text-white/70 hover:text-white text-sm transition-colors">Rooms</Link>
-            <Link href="/reserve" className="text-white/70 hover:text-white text-sm transition-colors">Reserve RIMBA</Link>
+          <div className="flex justify-center w-full">
+            <button 
+              onClick={scrollToNext}
+              className={clsx("absolute bottom-12 animate-bounce",
+                scrollProgress > 0 ? 'hidden' : ''
+              )}
+              >
+              <FiChevronDown size={32} className="text-white" />
+            </button>
           </div>
-
-          {/* Scroll Indicator */}
-          <button 
-            onClick={scrollToNext}
-            className="absolute bottom-12 animate-bounce"
-          >
-            <FiChevronDown size={32} className="text-white" />
-          </button>
         </div>
       </section>
 
@@ -200,7 +204,7 @@ const [scrollProgress, setScrollProgress] = useState(0);
                 className="text-xl md:text-2xl font-light leading-relaxed animate-fade-in"
                 style={{ 
                   animationDelay: `${index * 0.2}s`,
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'AimeMX, serif',
                   fontStyle: 'italic'
                 }}
               >
@@ -235,7 +239,7 @@ const [scrollProgress, setScrollProgress] = useState(0);
 
         <div className="relative text-center text-white px-6">
           <p className="text-sm tracking-[0.3em] uppercase mb-6 opacity-90">{resortInfo.location}</p>
-          <h2 className="text-6xl md:text-8xl font-light tracking-wider mb-8" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h2 className="text-6xl md:text-8xl font-light tracking-wider mb-8" style={{ fontFamily: 'AimeMX, serif' }}>
             {resortInfo.name}
           </h2>
           <p className="text-xl md:text-2xl font-light italic mb-12">{resortInfo.tagline}</p>
@@ -248,6 +252,13 @@ const [scrollProgress, setScrollProgress] = useState(0);
           </Link>
         </div>
       </section>
+      {/* <section className="relative w-full flex items-center justify-center">
+        <div className="absolute bottom-32 left-0 right-0 w-full flex justify-center items-center space-x-12 bg-black h-screen">
+          <Link href="/" className="text-[#7E7D7B] text-sm border-b-2 border-white pb-1">Overview</Link>
+          <Link href="/rooms" className="text-[#7E7D7B]/70 hover:text-[#7E7D7B] text-sm transition-colors">Rooms</Link>
+          <button className="text-[#7E7D7B]/70 hover:text-white text-sm transition-colors" onClick={open}>Reserve RIMBA</button>
+        </div>
+      </section> */}
     </div>
   );
 }

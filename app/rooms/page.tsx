@@ -5,10 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiUsers, FiMaximize, FiHome } from 'react-icons/fi';
 import { rooms } from '@/data/mockData';
+import { useReserveSidebar } from '@/hooks/use-reserve-sidebar';
 
 const RoomsPage = () => {
   const [filter, setFilter] = useState('All');
   const categories = ['All', 'One Bedroom', 'Two Bedroom', 'Villa'];
+  const { open } = useReserveSidebar();
 
   const filteredRooms = useMemo(() => {
     return filter === 'All' 
@@ -17,7 +19,7 @@ const RoomsPage = () => {
   }, [filter]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#F6F3E7]">
       {/* Hero */}
       <section className="relative h-[60vh] flex items-center justify-center">
         <div className="absolute inset-0">
@@ -31,7 +33,7 @@ const RoomsPage = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative text-center text-white px-6">
-          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'AimeMX, serif' }}>
             Rooms & Suites
           </h1>
           <p className="text-lg md:text-xl font-light italic">Discover Your Perfect Sanctuary</p>
@@ -117,15 +119,16 @@ const RoomsPage = () => {
                   <Link 
                     href={`/rooms/${room.id}`}
                     className="flex-1 text-center px-6 py-3 bg-white border border-teal-600 text-teal-600 font-medium rounded hover:bg-teal-50 transition-colors"
+                    onClick={() => console.log('Navigating to:', `/rooms/${room.id}`)}
                   >
                     View Details
                   </Link>
-                  <Link 
-                    href="/reserve"
+                  <button 
                     className="flex-1 text-center px-6 py-3 bg-teal-600 text-white font-medium rounded hover:bg-teal-700 transition-colors"
+                    onClick={() => open()}
                   >
                     Book Now
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
