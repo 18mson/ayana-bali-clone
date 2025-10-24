@@ -119,13 +119,15 @@ const Header = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                href="/reserve"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  open();
+                }}
                 className="bg-teal-600 text-white px-6 py-3 rounded text-center font-medium hover:bg-teal-700 transition-colors"
               >
                 Reserve
-              </Link>
+              </button>
             </div>
           </div>
         </div>

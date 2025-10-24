@@ -55,7 +55,7 @@ const DiningPage = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative text-center text-white px-6">
-          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'var(--font-aimemx)' }}>
             Dining
           </h1>
           <p className="text-lg md:text-xl font-light italic">Culinary Excellence in Paradise</p>
@@ -119,7 +119,7 @@ const DiningPage = () => {
       {/* Reservation CTA */}
       <section className="bg-teal-600 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
-          <h2 className="text-4xl font-light mb-6" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+          <h2 className="text-4xl font-light mb-6" style={{ fontFamily: 'var(--font-aimemx)' }}>
             Reserve Your Table
           </h2>
           <p className="text-lg mb-8 opacity-90">

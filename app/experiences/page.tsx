@@ -55,7 +55,7 @@ const ExperiencesPage = () => {
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative text-center text-white px-6">
-          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+          <h1 className="text-5xl md:text-7xl font-light tracking-wider mb-4" style={{ fontFamily: 'var(--font-aimemx)' }}>
             Experiences
           </h1>
           <p className="text-lg md:text-xl font-light italic">Curated Adventures & Wellness</p>
@@ -115,7 +115,7 @@ const ExperiencesPage = () => {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative text-center text-white px-6">
-          <h2 className="text-4xl md:text-5xl font-light mb-6" style={{ fontFamily: 'var(--font-geist-sans)' }}>
+          <h2 className="text-4xl md:text-5xl font-light mb-6" >
             Ready to Begin Your Journey?
           </h2>
           <button className="px-12 py-4 bg-white text-gray-900 font-medium tracking-wider hover:bg-gray-100 transition-all transform hover:scale-105">

@@ -5,6 +5,7 @@ import { LuBuilding, LuLeaf, LuTreePine, LuWaves } from "react-icons/lu";
 import OptimizedImage from "../OptimizedImage";
 import React from "react";
 import { lenisInstance } from '../LenisScroll';
+import Link from "next/link";
 
 export default function FourJourneysSection() {
   const scrollToSection = (sectionId) => {
@@ -346,6 +347,11 @@ export default function FourJourneysSection() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="flex justify-center">
+            <Link href="/rooms" className="mt-12 text-center border border-[#4D4B49] items-center flex justify-center px-8 py-4 bg-[#4D4B49] text-[#FAFAF9] hover:text-[#4D4B49] font-medium text-2xl tracking-wider hover:bg-[#FAFAF9] transition-all transform hover:scale-105 w-full h-28" >
+              View All Rooms
+            </Link>
           </div>
         </div>
       </section>
