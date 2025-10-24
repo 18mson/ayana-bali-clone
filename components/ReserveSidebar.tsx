@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiCalendar, FiUsers, FiHome, FiX } from 'react-icons/fi';
 import { useToast } from '@/hooks/use-toast';
 import { rooms } from '@/data/mockData';
@@ -42,6 +42,19 @@ const ReserveSidebar = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Disable scrolling on the main page when the sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll'); // Cleanup on unmount
+    };
+  }, [isOpen]);
+
   return (
     <>
       {isOpen && (
@@ -73,9 +86,9 @@ const ReserveSidebar = () => {
         <div className="overflow-y-auto h-full max-h-screen px-6 py-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Personal Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   First Name *
                 </label>
                 <input
@@ -84,11 +97,11 @@ const ReserveSidebar = () => {
                   required
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Last Name *
                 </label>
                 <input
@@ -97,15 +110,15 @@ const ReserveSidebar = () => {
                   required
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             {/* Contact */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email *
                 </label>
                 <input
@@ -114,11 +127,11 @@ const ReserveSidebar = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   Phone *
                 </label>
                 <input
@@ -127,15 +140,15 @@ const ReserveSidebar = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             {/* Stay Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   <FiCalendar className="inline mr-2" />
                   Check-In Date *
                 </label>
@@ -145,11 +158,11 @@ const ReserveSidebar = () => {
                   required
                   value={formData.checkIn}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   <FiCalendar className="inline mr-2" />
                   Check-Out Date *
                 </label>
@@ -159,15 +172,15 @@ const ReserveSidebar = () => {
                   required
                   value={formData.checkOut}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 />
               </div>
             </div>
 
             {/* Room Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   <FiHome className="inline mr-2" />
                   Room Type *
                 </label>
@@ -176,7 +189,7 @@ const ReserveSidebar = () => {
                   required
                   value={formData.roomType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 >
                   <option value="">Select a room type</option>
                   {rooms.map((room) => (
@@ -187,7 +200,7 @@ const ReserveSidebar = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
                   <FiUsers className="inline mr-2" />
                   Guests *
                 </label>
@@ -196,7 +209,7 @@ const ReserveSidebar = () => {
                   required
                   value={formData.guests}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 >
                   {[1, 2, 3, 4, 5, 6].map((num) => (
                     <option key={num} value={num}>
@@ -209,15 +222,15 @@ const ReserveSidebar = () => {
 
             {/* Special Requests */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Special Requests
               </label>
               <textarea
                 name="specialRequests"
                 value={formData.specialRequests}
                 onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+                rows={3}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 placeholder="Any special requests or requirements?"
               />
             </div>
@@ -225,7 +238,7 @@ const ReserveSidebar = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-teal-600 text-white font-medium text-lg rounded-lg hover:bg-teal-700 transition-all transform hover:scale-[1.02]"
+              className="w-full px-8 py-3 bg-teal-600 text-white font-medium text-lg rounded-lg hover:bg-teal-700 transition-all transform hover:scale-[1.02]"
             >
               Complete Reservation
             </button>

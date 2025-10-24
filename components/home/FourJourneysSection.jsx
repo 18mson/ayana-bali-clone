@@ -79,7 +79,7 @@ export default function FourJourneysSection() {
 
   return (
     <>
-      <section className="relative h-screen w-full flex items-center justify-center">
+      <section className="relative w-full flex items-center justify-center">
         <div className="min-h-screen bg-stone-100 w-full py-16 px-4">
           <div className="max-w-6xl mx-auto text-center mb-16">
             <div className="text-sm tracking-[0.2em] text-stone-600 mb-6 font-light">
@@ -102,7 +102,7 @@ export default function FourJourneysSection() {
         </div>
       </section>
       {/* Chapter 01 Section */}
-      <section id="chapter-01" className="bg-white relative h-screen w-full flex items-center justify-center">
+      <section id="chapter-01" className="bg-white relative w-full flex items-center justify-center py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -165,7 +165,7 @@ export default function FourJourneysSection() {
       </section>
 
       {/* Chapter 02 Section */}
-      <section id="chapter-02" className="py-20 bg-stone-50 relative h-screen w-full flex items-center justify-center">
+      <section id="chapter-02" className="py-20 bg-stone-50 relative w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
@@ -228,7 +228,7 @@ export default function FourJourneysSection() {
       </section>
 
       {/* Chapter 03 Section */}
-      <section id="chapter-03" className="py-20 bg-white relative h-screen w-full flex items-center justify-center">
+      <section id="chapter-03" className="py-20 bg-white relative w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
@@ -290,7 +290,7 @@ export default function FourJourneysSection() {
       </section>
 
       {/* Rooms Section */}
-      <section id="chapter-rooms" className="py-20 bg-stone-50 relative h-screen w-full flex items-center justify-center">
+      <section id="chapter-rooms" className="py-20 bg-stone-50 relative w-full flex items-center justify-center">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">

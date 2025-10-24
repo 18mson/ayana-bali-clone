@@ -14,7 +14,6 @@ const CallToActionSection: React.FC<CallToActionSectionProps> = ({ resortInfo })
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [animationDisabled, setAnimationDisabled] = useState(false);
     const { open } = useReserveSidebar()
-  
 
   useEffect(() => {
     const currentSection = sectionRef.current;
