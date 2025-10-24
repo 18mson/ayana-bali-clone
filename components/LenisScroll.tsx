@@ -9,6 +9,8 @@ export default function LenisScroll() {
       duration: 1.2, // Adjust smoothness (default 1.2)
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // optional custom easing
       smoothWheel: true, // for mouse wheel
+      direction: 'vertical', // Ensure vertical scrolling
+      touchMultiplier: 2, // Adjust touch sensitivity
     });
 
     function raf(time: number) {
