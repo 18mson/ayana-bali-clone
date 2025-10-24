@@ -1,15 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 
 export default function LenisScroll() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2, // Adjust smoothness (default 1.2)
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // optional custom easing
-      smoothWheel: true, // for mouse wheel
-      touchMultiplier: 2, // Adjust touch sensitivity
+      duration: 0.9, 
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true, 
+      touchMultiplier: 1.5, 
+      syncTouch: true, 
     });
 
     function raf(time: number) {
@@ -19,9 +20,7 @@ export default function LenisScroll() {
 
     requestAnimationFrame(raf);
 
-    return () => {
-      lenis.destroy();
-    };
+    return () => lenis.destroy();
   }, []);
 
   return null;
