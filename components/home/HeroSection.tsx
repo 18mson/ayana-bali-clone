@@ -13,12 +13,12 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ resortInfo, scrollProgress, scrollToNext }) => {
   return (
-    <section className="min-h-[200dvh] w-full">
+    <section className="min-h-[150dvh] w-full">
       <div className="grid grid-cols-1 text-white px-6">
         <div className="text-center space-y-6 h-dvh flex  items-center justify-center">
           <div className="sticky flex flex-col text-white z-10 top-1/4">
             <p className="text-sm tracking-[0.3em] uppercase opacity-90">{resortInfo.location}</p>
-            <h1 className="text-7xl md:text-9xl font-light tracking-wider">
+            <h1 className="text-7xl md:text-9xl font-light tracking-wider" style={{ fontFamily: 'AimeMX, serif' }}>
               {resortInfo.name}
             </h1>
             <p className="text-xl md:text-3xl font-light italic tracking-wide opacity-90">

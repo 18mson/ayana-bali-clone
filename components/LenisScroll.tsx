@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
+export let lenisInstance: Lenis | null = null;
+
 export default function LenisScroll() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -13,6 +15,8 @@ export default function LenisScroll() {
       syncTouch: true, 
     });
 
+    lenisInstance = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -20,7 +24,10 @@ export default function LenisScroll() {
 
     requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      lenis.destroy();
+      lenisInstance = null;
+    }
   }, []);
 
   return null;

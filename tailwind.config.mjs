@@ -8,10 +8,9 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist)', 'var(--font-helvetica-now-text)', 'sans-serif'],
-        playfair: ['var(--font-playfair)', 'var(--font-aime)', 'serif'],
-        'helvetica-now-text': ['var(--font-helvetica-now-text)', 'sans-serif'],
-        aime: ['var(--font-aime)', 'serif'],
+        sans: ['var(--font-aimemx)', 'Aime MX', 'Helvetica', 'Arial', 'sans-serif'], 
+        serif: ['var(--font-aimemx)', 'Aime MX', 'serif'], 
+        aime: ['var(--font-aimemx)', 'Aime MX', 'serif'], 
       },
       animation: {
         'spin-reverse': 'spin 1s linear infinite reverse',

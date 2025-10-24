@@ -39,7 +39,7 @@ export default function OptimizedBackground({
         fill
         sizes="100vw"
         className={`object-cover${fixed ? ' fixed!' : ''}`}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoad={() => setIsLoading(false)}
       />
       {overlay && (
         <div

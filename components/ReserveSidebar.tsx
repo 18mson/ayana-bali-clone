@@ -9,7 +9,7 @@ import { useReserveSidebar } from '@/hooks/use-reserve-sidebar';
 
 const ReserveSidebar = () => {
   const { toast } = useToast();
-  const { isOpen, close } = useReserveSidebar()
+  const { isOpen, close } = useReserveSidebar();
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -70,7 +70,7 @@ const ReserveSidebar = () => {
         </div>
 
         {/* Form Content */}
-        <div className="overflow-y-auto h-[calc(100vh-65px)] px-6 py-8">
+        <div className="overflow-y-auto h-full max-h-screen px-6 py-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Personal Info */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

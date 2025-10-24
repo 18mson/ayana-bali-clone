@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import BackgroundContainer from '@/components/BackgroundContainer';
-import HeroSection from '@/components/HeroSection';
-import ResortMapSection from '@/components/ResortMapSection';
-import PoeticDescriptionSection from '@/components/PoeticDescriptionSection';
-import CallToActionSection from '@/components/CallToActionSection';
+import BackgroundContainer from '@/components/home/BackgroundContainer';
+import HeroSection from '@/components/home/HeroSection';
+import ResortMapSection from '@/components/home/ResortMapSection';
+import CallToActionSection from '@/components/home/CallToActionSection';
+import FourJourneysSection from '@/components/home/FourJourneysSection';
+import { lenisInstance } from '@/components/LenisScroll';
 
 export default function Home() {
   const [resortInfo, setResortInfo] = useState({
@@ -54,12 +55,11 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToNext = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
+const scrollToNext = () => {
+  if (lenisInstance) {
+    lenisInstance.scrollTo(window.innerHeight); 
+  }
+};
 
 
   return (
@@ -67,7 +67,7 @@ export default function Home() {
       <BackgroundContainer scrollProgress={scrollProgress} />
       <HeroSection resortInfo={resortInfo} scrollProgress={scrollProgress} scrollToNext={scrollToNext} />
       <ResortMapSection resortProperties={resortProperties} />
-      <PoeticDescriptionSection description={resortInfo.description} />
+      <FourJourneysSection />
       <CallToActionSection resortInfo={resortInfo} />
     </div>
   );
