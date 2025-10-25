@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FiCalendar, FiUsers, FiHome, FiX } from 'react-icons/fi';
 import { useToast } from '@/hooks/use-toast';
 import { rooms } from '@/data/mockData';
@@ -42,19 +42,6 @@ const ReserveSidebar = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Disable scrolling on the main page when the sidebar is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-
-    return () => {
-      document.body.classList.remove('no-scroll'); // Cleanup on unmount
-    };
-  }, [isOpen]);
-
   return (
     <>
       {isOpen && (
@@ -83,10 +70,10 @@ const ReserveSidebar = () => {
         </div>
 
         {/* Form Content */}
-        <div className="overflow-y-auto h-full max-h-screen px-6 py-8">
+        <div className="overflow-y-auto h-full max-h-[calc(100vh-62px)] px-6 py-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Personal Info */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   First Name *
@@ -116,7 +103,7 @@ const ReserveSidebar = () => {
             </div>
 
             {/* Contact */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email *
@@ -229,7 +216,7 @@ const ReserveSidebar = () => {
                 name="specialRequests"
                 value={formData.specialRequests}
                 onChange={handleChange}
-                rows={3}
+                rows={1}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
                 placeholder="Any special requests or requirements?"
               />
